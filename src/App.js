@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [messages, setMessages] = useState({ // memoryA
+    text: ''
+  });
+  const [replaceObj, setReplaceObj] = useState({
+    message: '',
+    id: 1
+  })
+
+  console.log('after render: ', messages)
+  console.log('after render replaceObj: ', replaceObj)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      this is message: {messages.text}
+      <input 
+        type="text" 
+        onChange={event => {
+          const newMessages = { // memoryB
+            text:  event.target.value
+          }
+          setMessages(newMessages)
+        }}
+      />
+      <br />
+      this is replace object: {replaceObj.message}
+      <input 
+        type="text" 
+        onChange={event => {
+          const newMessage = event.target.value;
+          setReplaceObj(prevState => {
+            return {
+              ...prevState,
+              message: newMessage
+            }
+          });
+        }}
+      />
     </div>
   );
 }
