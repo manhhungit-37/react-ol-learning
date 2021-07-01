@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Click from './components/Click';
+import Comment from './components/Comment';
 
 function App() {
   const [messages, setMessages] = useState({ // memoryA
@@ -38,6 +40,9 @@ function App() {
           });
         }}
       />
+      <Click />
+
+      <Comment />
     </div>
   );
 }
