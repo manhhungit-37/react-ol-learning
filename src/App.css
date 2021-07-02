@@ -1,0 +1,10 @@
+.gray {
+  background-color: gray;
+  color: #fff;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  text-align: center;
+  line-height: 100px;
+}

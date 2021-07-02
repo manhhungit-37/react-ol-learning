@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Click from './components/Click';
 import Comment from './components/Comment';
+import GenerateBoxes from './components/GenerateBoxes';
+import "./App.css"
 
 function App() {
   const [messages, setMessages] = useState({ // memoryA
@@ -43,6 +45,8 @@ function App() {
       <Click />
 
       <Comment />
+
+      <GenerateBoxes />
     </div>
   );
 }

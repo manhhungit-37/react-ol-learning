@@ -5,7 +5,10 @@ export default function Comment() {
   const [counter, setCounter] = useState(0);
 
   function plus() {
-    setCounter(prevState => prevState + 1);
+    setCounter(prevState => {
+      console.log(prevState);
+      return prevState + 1;
+    });
   }
 
   function increment() {
