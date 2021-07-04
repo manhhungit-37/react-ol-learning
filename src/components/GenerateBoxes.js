@@ -1,11 +1,11 @@
 import { useRef, useState } from "react"
 
 export default function GenerateBoxes() {
-  const input = useRef(null);
+  const numberRef = useRef(null);
   const [boxes, setBoxes] = useState([]);
 
   function handleClick() {
-    const inputValue = Number(input.current.value);
+    const inputValue = Number(numberRef.current.value);
     if (inputValue > 0 && inputValue < 128) {
       setBoxes(new Array(inputValue).fill());
     }
@@ -14,16 +14,16 @@ export default function GenerateBoxes() {
     }
   }
 
-  console.log(boxes);
-
   return (
     <div>
       <label>Number of boxes:</label>
-      <input type="text" ref={input} />
+      <input type="text" ref={numberRef} />
       <input type="button" value="Generate" onClick={handleClick} />   
       <hr />
       {boxes.length > 0 && boxes.map((_, boxIndex) => (
-        <div key={boxIndex} className="gray">Box #{boxIndex+1}</div>
+        <div key={boxIndex} className="gray">
+          <span>Box #{boxIndex+1}</span>
+        </div>
       ))}
     </div>
   )

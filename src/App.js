@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Click from './components/Click';
 import Comment from './components/Comment';
 import GenerateBoxes from './components/GenerateBoxes';
+import Forms from './components/Forms';
 import "./App.css"
 
 function App() {
@@ -47,6 +48,9 @@ function App() {
       <Comment />
 
       <GenerateBoxes />
+
+      <h2>Forms</h2>
+      <Forms />
     </div>
   );
 }
