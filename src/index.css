@@ -37,3 +37,18 @@ code {
   margin: 0;
   opacity: 0;
 }
+
+
+.boxes2 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 204px;
+}
+
+.boxes2 div {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  border: 1px solid #000;
+}

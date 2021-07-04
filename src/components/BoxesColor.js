@@ -8,12 +8,12 @@ const bgBoxes = {
 }
 
 export default function BoxesColor() {
-  const [boxes, setBoxes] = useState(bgBoxes)
+  const [boxes, setBoxes] = useState(bgBoxes);
   const [checked, setChecked] = useState('');
 
   function onChange(event, color) {
     const { checked } = event.target;
-    setChecked(color)
+    setChecked(color);
     if(!checked) {
       setChecked('')
       setBoxes(bgBoxes)

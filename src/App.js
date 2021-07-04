@@ -6,6 +6,8 @@ import Forms from './components/Forms';
 import BoxesColor from './components/BoxesColor';
 
 import "./App.css"
+import BoxesColor2 from './components/BoxesColor2';
+import Test from './components/Test';
 
 function App() {
   const [messages, setMessages] = useState({ // memoryA
@@ -59,7 +61,10 @@ function App() {
       <h3>Try to toggle to change background color box</h3>
       <BoxesColor />
 
+      <h3>Change background box 2</h3>
+      <BoxesColor2 />
   
+      <Test />
     </div>
   );
 }
