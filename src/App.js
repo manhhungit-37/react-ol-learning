@@ -3,6 +3,8 @@ import Click from './components/Click';
 import Comment from './components/Comment';
 import GenerateBoxes from './components/GenerateBoxes';
 import Forms from './components/Forms';
+import BoxesColor from './components/BoxesColor';
+
 import "./App.css"
 
 function App() {
@@ -47,10 +49,17 @@ function App() {
 
       <Comment />
 
-      <GenerateBoxes />
-
       <h2>Forms</h2>
       <Forms />
+
+      <h1>Sample App</h1>
+      
+      <h3>Generate Box</h3>
+      <GenerateBoxes />
+      <h3>Try to toggle to change background color box</h3>
+      <BoxesColor />
+
+  
     </div>
   );
 }
