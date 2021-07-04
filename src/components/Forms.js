@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import clsx from 'clsx'
 
 // components
 import Input from './Input'
@@ -9,8 +10,8 @@ function Forms() {
   // })
   const [firstName, setFirstName] = useState('')
   const [form, setForm] = useState({
-    learn: "react",
-    age: 30
+    learn: "",
+    age: 0
   })
 
   function onChange(event) {
@@ -24,10 +25,16 @@ function Forms() {
       [name]: event.target.value
     })
   }
+  console.log('mutiple input: ', form)
 
-  console.log('firstName: ', firstName)
   return (
-    <div>
+    // <div  className={firstName && 'forms'}>
+    <div 
+      className={clsx(
+        firstName && 'forms',
+        form.age > 0 && 'age'
+      )}
+    >
       <Input value={firstName} onChange={onChange} />
 
       <h4>Multiple Input</h4>
