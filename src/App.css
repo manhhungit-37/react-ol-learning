@@ -19,3 +19,10 @@
 .gray span {
   display: inline-block;
 }
+
+.danger {
+  color: red;
+  display: block;
+  margin-left: 10%;
+  margin-bottom: 10px;
+}

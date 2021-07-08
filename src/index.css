@@ -52,3 +52,38 @@ code {
   line-height: 100px;
   border: 1px solid #000;
 }
+
+.register-form {
+  padding: 0 15px;
+  font-size: 16px;
+}
+
+.register-form span {
+  display: inline-block;
+  width: 85%;
+  margin-bottom: 20px;
+}
+
+.register-form span label {
+  margin-right: 15px;
+}
+
+.register-form > label {
+  display: inline-block;
+  width: 10%;
+}
+
+.register-form > input,.register-form > textarea {
+  width: 85%;
+  margin-bottom: 20px;
+  line-height: 30px;
+}
+
+button[type="submit"] {
+  background-color: #84C639;
+  padding: 10px 30px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+

@@ -4,10 +4,9 @@ import Comment from './components/Comment';
 import GenerateBoxes from './components/GenerateBoxes';
 import Forms from './components/Forms';
 import BoxesColor from './components/BoxesColor';
-
 import "./App.css"
 import BoxesColor2 from './components/BoxesColor2';
-import Test from './components/Test';
+import Register from './components/Register';
 
 function App() {
   const [messages, setMessages] = useState({ // memoryA
@@ -64,7 +63,7 @@ function App() {
       <h3>Change background box 2</h3>
       <BoxesColor2 />
   
-      <Test />
+      <Register />
     </div>
   );
 }
