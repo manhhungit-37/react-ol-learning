@@ -1,4 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+
+// context
+import { AppContext } from '../context/AppContext';
+import { TodoContext } from '../context/TodoContext';
 
 const bgBoxes = {
   red: "#ff0000",
@@ -8,8 +12,13 @@ const bgBoxes = {
 }
 
 export default function BoxesColor() {
+  const { name, setName }  = useContext(AppContext);
+  const { todos }  = useContext(TodoContext);
   const [boxes, setBoxes] = useState(bgBoxes);
   const [checked, setChecked] = useState('');
+
+  console.log('appContext of boxColors: ', name)
+  console.log('todos of boxColors: ', todos)
 
   function onChange(event, color) {
     const { checked } = event.target;
@@ -66,6 +75,8 @@ export default function BoxesColor() {
           onChange={event => onChange(event, 'magenta')}
         />
       </div>
+
+      <button type="button" onClick={() => setName('truong')}>change name</button>
     </div>
     );
   }

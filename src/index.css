@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 0 20px;
+  padding: 0 20px 100px 20px;
 }
 
 code {
@@ -37,7 +37,6 @@ code {
   margin: 0;
   opacity: 0;
 }
-
 
 .boxes2 {
   display: flex;
@@ -73,17 +72,17 @@ code {
   width: 10%;
 }
 
-.register-form > input,.register-form > textarea {
+.register-form > input,
+.register-form > textarea {
   width: 85%;
   margin-bottom: 20px;
   line-height: 30px;
 }
 
 button[type="submit"] {
-  background-color: #84C639;
+  background-color: #84c639;
   padding: 10px 30px;
   outline: none;
   border: none;
   cursor: pointer;
 }
-

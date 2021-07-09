@@ -4,9 +4,15 @@ import './index.css';
 
 import App from './App';
 
+// context
+import { AppProvider } from './context/AppContext';
+import { TodoProvider } from './context/TodoContext';
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <AppProvider>
+    <TodoProvider>
+      <App />
+    </TodoProvider>
+  </AppProvider>,
   document.getElementById('root')
 );

@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+
+
 import Click from './components/Click';
 import Comment from './components/Comment';
 import GenerateBoxes from './components/GenerateBoxes';
@@ -7,8 +9,13 @@ import BoxesColor from './components/BoxesColor';
 import "./App.css"
 import BoxesColor2 from './components/BoxesColor2';
 import Register from './components/Register';
+import Todos from './components/Todos/Todos';
+
+// context
+import { AppContext } from './context/AppContext';
 
 function App() {
+  const appContext = useContext(AppContext);
   const [messages, setMessages] = useState({ // memoryA
     text: ''
   });
@@ -16,9 +23,29 @@ function App() {
     message: '',
     id: 1
   })
+  const [users, setUsers] = useState([]);
+  const [count, setCount] = useState(1);
+
 
   console.log('after render: ', messages)
   console.log('after render replaceObj: ', replaceObj)
+  console.log('appContext: ', appContext)
+
+  // fetch users
+  useEffect(() => {
+    fetch('https://tony-json-server.herokuapp.com/api/users')
+      .then(res => res.json())
+      .then(data => {
+        setUsers(data.data)
+      })
+  }, [])
+
+  // re-run effect
+  useEffect(() => {
+    console.log('re-run useEffect: ', count)
+  }, [count])
+
+  console.log('users', users)
 
   return (
     <div className="App">
@@ -64,6 +91,16 @@ function App() {
       <BoxesColor2 />
   
       <Register />
+
+      <h3>Effect Hook</h3>
+      {users.length > 0 && users.map(user => (
+        <div>{user.name}</div>
+      ))}
+      
+      <button type="button" onClick={() => setCount(count + 1)}>count</button>
+
+      <h3> Sample Todo Context</h3>
+      <Todos />
     </div>
   );
 }
