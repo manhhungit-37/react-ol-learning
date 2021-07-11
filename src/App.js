@@ -10,9 +10,11 @@ import "./App.css"
 import BoxesColor2 from './components/BoxesColor2';
 import Register from './components/Register';
 import Todos from './components/Todos/Todos';
-
+import MovieContextProvider from './context/MovieContext';
 // context
 import { AppContext } from './context/AppContext';
+import MovieForm from './components/Movie/MovieForm';
+import MovieList from './components/Movie/MovieList';
 
 function App() {
   const appContext = useContext(AppContext);
@@ -94,13 +96,18 @@ function App() {
 
       <h3>Effect Hook</h3>
       {users.length > 0 && users.map(user => (
-        <div>{user.name}</div>
+        <div key={user.id}>{user.name}</div>
       ))}
       
       <button type="button" onClick={() => setCount(count + 1)}>count</button>
 
       <h3> Sample Todo Context</h3>
       <Todos />
+
+      <MovieContextProvider>
+        <MovieForm />
+        <MovieList />
+      </MovieContextProvider>
     </div>
   );
 }
