@@ -10,9 +10,12 @@ import "./App.css"
 import BoxesColor2 from './components/BoxesColor2';
 import Register from './components/Register';
 import Todos from './components/Todos/Todos';
-import MovieContextProvider from './context/MovieContext';
+import UseReducer from './components/UseReducer/UseReducer';
+import UseRef from './components/UseRef';
+
 // context
 import { AppContext } from './context/AppContext';
+import MovieContextProvider from './context/MovieContext';
 import MovieForm from './components/Movie/MovieForm';
 import MovieList from './components/Movie/MovieList';
 
@@ -108,6 +111,10 @@ function App() {
         <MovieForm />
         <MovieList />
       </MovieContextProvider>
+
+      <UseReducer />
+      
+      <UseRef />
     </div>
   );
 }

@@ -18,14 +18,14 @@ const MovieContextProvider = ({children}) => {
     return setMovies(newMovie); 
   }
 
-  const MovieContextData = {
+  const movieValues = {
     movies,
     addMovie,
     deleteMovie
   }
 
   return (
-    <MovieContext.Provider value={MovieContextData}>
+    <MovieContext.Provider value={movieValues}>
       {children}
     </MovieContext.Provider>
   )
