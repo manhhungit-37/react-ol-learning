@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
 import movieReducer from '../reducer/MovieReducer';
 import { ADD_MOVIE, DELETE_MOVIE } from "../reducer/types";
 
@@ -21,7 +21,7 @@ const MovieContextProvider = ({children}) => {
     dispatch({
       type: DELETE_MOVIE,
       payload: {
-        id: id
+        id
       }
     })
   }

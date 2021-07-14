@@ -4,12 +4,11 @@ import { useForm } from 'react-hook-form';
 function ReactHookForm() {
   const { register,handleSubmit, formState: { errors } } = useForm();
 
-  function onHandleSubmit(e) {
-    e.preventDefault();
+  function onHandleSubmit(data) {
+    console.log('onHandeSubmit: ', data)
   }
 
-  console.log(errors);
-
+  console.log('onHandeSubmit: ')
   return (
     <form className="react-hook-from" onSubmit={handleSubmit(onHandleSubmit)}>
         <div className="flex">
