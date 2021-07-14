@@ -1,3 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+}
+
 .gray {
   background-color: gray;
   color: #fff;
@@ -25,4 +36,48 @@
   display: block;
   margin-left: 10%;
   margin-bottom: 10px;
+}
+
+.react-hook-from {
+  width: 50%;
+  margin: auto;
+  border: 1px solid #000;
+  padding: 20px;
+}
+
+.input-half-container {
+  display: inline-block;
+  width: 45%;
+  margin: 20px 10px 30px;
+}
+
+.input-half-container input {
+  width: 100%;
+  font-size: 16px;
+  padding: 3px 0;
+  outline: none;
+  border-width: 0;
+  border-bottom: 1px solid #999;
+  margin-bottom: 10px;
+}
+
+.input-partthree-container {
+  display: inline-block;
+  width: 30%;
+  margin: 20px 10px 30px;
+}
+
+.input-partthree-container input {
+  width: 100%;
+  font-size: 16px;
+  padding: 3px 0;
+  outline: none;
+  border-width: 0;
+  border-bottom: 1px solid #999;
+  margin-bottom: 10px;
+}
+
+.error-input {
+  color: #ff0000;
+  height: 20px;
 }

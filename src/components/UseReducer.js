@@ -1,33 +1,34 @@
 import React, { useReducer } from 'react'
 
 // local reducer
-import { initialState, reducer, actionTypes } from './reducer';
+import { initialState, todoReducer } from '../reducer/TodoReducer';
+import { SHOW_LOADING, INCREMENT, HIDDEN_LOADING, DESCREMENT, SET_COUNT_ONE, SET_COUNT_TEN } from '../reducer/types';
 
 function UseReducer() {
-  const [{ count, isLoading }, dispatch] = useReducer(reducer, initialState)
+  const [{ count, isLoading }, dispatch] = useReducer(todoReducer, initialState)
 
   function handleIncrement() {
-    dispatch({ type: actionTypes.SHOW_LOADING })
+    dispatch({ type: SHOW_LOADING })
     setTimeout(() => {
-     dispatch({ type: actionTypes.INCREMENT, payload: 1 })
-     dispatch({ type: actionTypes.HIDDEN_LOADING })
+     dispatch({ type: INCREMENT, payload: 1 })
+     dispatch({ type: HIDDEN_LOADING })
     }, 1000)
   }
 
   function handleDecrement() {
-    dispatch({ type: actionTypes.SHOW_LOADING })
+    dispatch({ type: SHOW_LOADING })
     setTimeout(() => {
-      dispatch({ type: actionTypes.DESCREMENT, payload: 1 })
-      dispatch({ type: actionTypes.HIDDEN_LOADING })
+      dispatch({ type: DESCREMENT, payload: 1 })
+      dispatch({ type: HIDDEN_LOADING })
      }, 1000)
   }
 
   function setOne() {
-    dispatch({ type: actionTypes.SET_COUNT_ONE, payload: 1 })
+    dispatch({ type: SET_COUNT_ONE, payload: 1 })
   }
 
   function setTen() {
-    dispatch({ type: actionTypes.SET_COUNT_TEN, payload: 10 })
+    dispatch({ type: SET_COUNT_TEN, payload: 10 })
   }
 
   return (

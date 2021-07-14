@@ -1,21 +1,29 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
+import movieReducer from '../reducer/MovieReducer';
+import { ADD_MOVIE, DELETE_MOVIE } from "../reducer/types";
 
 export const MovieContext = React.createContext();
 
 const MovieContextProvider = ({children}) => {
-  const [movies, setMovies] = useState([]);
+  const [movies, dispatch] = useReducer(movieReducer, []);
 
   function addMovie(text) {
-    const newMovie = {
-      id: Date.now(),
-      name: text
-    }
-    setMovies(prevMovie => [...prevMovie, newMovie]);
+    dispatch({
+      type: ADD_MOVIE,
+      payload: {
+        id: Date.now(),
+        name: text
+      }
+    });
   }
 
   function deleteMovie(id) {
-    const newMovie = movies.filter(movie => movie.id !== id);
-    return setMovies(newMovie); 
+    dispatch({
+      type: DELETE_MOVIE,
+      payload: {
+        id: id
+      }
+    })
   }
 
   const movieValues = {
