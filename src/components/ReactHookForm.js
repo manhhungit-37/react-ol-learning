@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 
+import useScreenWidth from '../hooks/useScreenWidth';
+
 function ReactHookForm() {
+  const isSmalScreen = useScreenWidth();
   const { register,handleSubmit, formState: { errors } } = useForm();
 
   function onHandleSubmit(data) {
     console.log('onHandeSubmit: ', data)
   }
+  
+  useEffect(() => {
+    console.log('onHandeSubmit: ')
+  }, [])
 
-  console.log('onHandeSubmit: ')
   return (
     <form className="react-hook-from" onSubmit={handleSubmit(onHandleSubmit)}>
         <div className="flex">
@@ -96,7 +102,7 @@ function ReactHookForm() {
             {errors.postcode && <div className="error-input">{errors.postcode.message}</div>}
           </div>
         </div>
-        <button type="submit">Update</button>
+        <button type="submit">Update {isSmalScreen ? 'small' : 'large'}</button>
     </form>
   )
 }

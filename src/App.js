@@ -17,6 +17,7 @@ import MovieContextProvider from './context/MovieContext';
 import Movies from './components/Movie/Movies';
 import ReactHookForm from './components/ReactHookForm';
 import UseMemo from './components/UseMemo';
+import UseCheckSize from './components/UseCheckSize';
 
 function App() {
   const appContext = useContext(AppContext);
@@ -53,7 +54,8 @@ function App() {
 
   const handleTitle = useCallback(
   () => {
-    console.log('handleTitle')
+    console.log('handleTitle', count)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
   console.log('users', users)
@@ -129,6 +131,10 @@ function App() {
       <h3>memo hook</h3>
       <UseMemo title={title} releaseData="123" handleTitle={handleTitle} />
       <button type="button" onClick={() => setTitle(`truong_${Date.now()}`)}>try to change title</button>
+
+      -----------------------------
+      <h3>Custom Hook</h3>
+      <UseCheckSize />
     </div>
   );
 }
