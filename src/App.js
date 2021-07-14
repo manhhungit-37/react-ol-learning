@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 import Click from './components/Click';
 import Comment from './components/Comment';
 import GenerateBoxes from './components/GenerateBoxes';
@@ -16,6 +16,7 @@ import { AppContext } from './context/AppContext';
 import MovieContextProvider from './context/MovieContext';
 import Movies from './components/Movie/Movies';
 import ReactHookForm from './components/ReactHookForm';
+import UseMemo from './components/UseMemo';
 
 function App() {
   const appContext = useContext(AppContext);
@@ -28,6 +29,7 @@ function App() {
   })
   const [users, setUsers] = useState([]);
   const [count, setCount] = useState(1);
+  const [title, setTitle] = useState('truong memo')
 
 
   console.log('after render: ', messages)
@@ -47,6 +49,12 @@ function App() {
   useEffect(() => {
     console.log('re-run useEffect: ', count)
   }, [count])
+
+
+  const handleTitle = useCallback(
+  () => {
+    console.log('handleTitle')
+  },[]);
 
   console.log('users', users)
 
@@ -100,7 +108,7 @@ function App() {
         <div key={user.id}>{user.name}</div>
       ))}
       
-      <button type="button" onClick={() => setCount(count + 1)}>count</button>
+      <button type="button" onClick={() => setCount(count + 1)}>count adasdasdsadasd</button>
 
       <h3> Sample Todo Context</h3>
       <Todos />
@@ -116,6 +124,11 @@ function App() {
       <h1>React hook form</h1>
 
       <ReactHookForm />
+
+      -----------------------------
+      <h3>memo hook</h3>
+      <UseMemo title={title} releaseData="123" handleTitle={handleTitle} />
+      <button type="button" onClick={() => setTitle(`truong_${Date.now()}`)}>try to change title</button>
     </div>
   );
 }
