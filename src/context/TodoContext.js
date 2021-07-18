@@ -1,44 +1,45 @@
 import React, { useState, useEffect } from 'react';
 
-const data = JSON.parse(localStorage.getItem("data")) || [];
-
 export const TodoContext = React.createContext();
 
-
+const items = [{
+  id: 1,
+  name: 'learn react'
+},
+{
+  id: 2,
+  name: 'learn javascript'
+}]
 
 export const TodoProvider = ({ children }) => {
+  const [defaultTodo, setDefaultTodo] = useState([]);
   const [todos, setTodos] = useState([]);
-  const [todosFilter, setTodosFilter] = useState([]);
 
   useEffect(() => {
     async function fecthTodos() {
       const res = await fetchApi();
       setTodos(res);
+      setDefaultTodo(res);
     }    
 
     fecthTodos();
   }, [])
 
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos])
-
   const fetchApi = () => {
     return new Promise(resovle => {
-      resovle(data);
+      resovle(items);
     })
   }
 
-  function fetchApiWithConditional(condition) {
-    const newData = todos.filter(todo => todo['name'].indexOf(condition) !== -1);
-    setTodosFilter(newData);
+  function fetchApiWithConditional(text) {
+    const newData = defaultTodo.filter(todo => todo.name.toLowerCase().indexOf(text) !== -1);
+    setTodos(newData)
   }
 
   function deleteTodo(todoId) {
-    setTodos(prevState => {
-      const newTodos = prevState.filter(todo => todo.id !== todoId)
-      return newTodos
-    })
+    const newData = todos.filter(todo => todo.id !== todoId)
+    setTodos(newData)
+    setDefaultTodo(newData)
   }
 
   function addTodo(text) {
@@ -46,17 +47,14 @@ export const TodoProvider = ({ children }) => {
       id: Date.now(),
       name: text
     }
-
-    setTodos(prevState => {
-      return [...prevState, newTodo]
-    })
+    setTodos([...todos, newTodo])
+    setDefaultTodo([...todos, newTodo])
   }
 
   return (
     <TodoContext.Provider
       value={{
         todos,
-        todosFilter,
         deleteTodo,
         addTodo,
         fetchApi,
