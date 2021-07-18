@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext, useCallback } from 'react';
+import { Route } from 'react-router-dom';
 import Click from './components/Click';
 import Comment from './components/Comment';
 import GenerateBoxes from './components/GenerateBoxes';
@@ -10,6 +11,7 @@ import Register from './components/Register';
 import Todos from './components/Todos/Todos';
 import UseReducer from './components/UseReducer';
 import UseRef from './components/UseRef';
+import Navbar from './components/Navbar';
 
 // context
 import { AppContext } from './context/AppContext';
@@ -62,6 +64,18 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
+      <Route exact path="/forms" component={Forms} />
+      <Route exact path="/sample-app-generateBox" component={GenerateBoxes} />
+      <Route exact path="/sample-app-boxColor1" component={BoxesColor} />
+      <Route exact path="/sample-app-boxColor2" component={BoxesColor2} />
+      <Route exact path="/register" component={Register} />
+
+      <br />
+      <br />
+      ----------------------------------------------
+      <br />
+      <br />
       this is message: {messages.text}
       <input 
         type="text" 
@@ -89,22 +103,7 @@ function App() {
       <Click />
 
       <Comment />
-
-      <h2>Forms</h2>
-      <Forms />
-
-      <h1>Sample App</h1>
       
-      <h3>Generate Box</h3>
-      <GenerateBoxes />
-      <h3>Try to toggle to change background color box</h3>
-      <BoxesColor />
-
-      <h3>Change background box 2</h3>
-      <BoxesColor2 />
-  
-      <Register />
-
       <h3>Effect Hook</h3>
       {users.length > 0 && users.map(user => (
         <div key={user.id}>{user.name}</div>

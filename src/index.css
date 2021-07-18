@@ -86,3 +86,10 @@ button[type="submit"] {
   border: none;
   cursor: pointer;
 }
+ul {
+  display: flex;
+}
+ul li {
+  display: flex;
+  padding: 0 20px;
+}
