@@ -1,35 +1,38 @@
 import React, { useState, useEffect } from 'react';
 
-const data = [
-  {
-    id: 1,
-    name: 'learn react'
-  },
-  {
-    id: 2,
-    name: 'learn context'
-  }
-]
+const data = JSON.parse(localStorage.getItem("data")) || [];
 
 export const TodoContext = React.createContext();
 
-const fetchApi = (data) => {
-  return new Promise(resovle => {
-    setTimeout(resovle(data), 3000)
-  })
-}
+
 
 export const TodoProvider = ({ children }) => {
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState([]);
+  const [todosFilter, setTodosFilter] = useState([]);
 
   useEffect(() => {
     async function fecthTodos() {
-      const res = await fetchApi(data)
-      setTodos(res)
+      const res = await fetchApi();
+      setTodos(res);
     }    
 
     fecthTodos();
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos])
+
+  const fetchApi = () => {
+    return new Promise(resovle => {
+      resovle(data);
+    })
+  }
+
+  function fetchApiWithConditional(condition) {
+    const newData = todos.filter(todo => todo['name'].indexOf(condition) !== -1);
+    setTodosFilter(newData);
+  }
 
   function deleteTodo(todoId) {
     setTodos(prevState => {
@@ -49,14 +52,15 @@ export const TodoProvider = ({ children }) => {
     })
   }
 
-  console.log('trodo', todos)
-
   return (
     <TodoContext.Provider
       value={{
         todos,
+        todosFilter,
         deleteTodo,
-        addTodo
+        addTodo,
+        fetchApi,
+        fetchApiWithConditional
       }}
     >
       {children}
