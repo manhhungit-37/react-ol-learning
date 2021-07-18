@@ -1,29 +1,24 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
+
+
+import useDebounce from '../../hooks/useDebounce';
 
 function TodoSearch({ onSubmit }) {
-  const [searchTerm, setSearchTerm] = useState('');
-  const timeOutRef = useRef();
+  const [text, setText] = useState('');
+  //hooks
+  const { textDebounce } = useDebounce(text);
 
   function handleSearch(e) {
     const value = e.target.value;
-    setSearchTerm(value);
-
-    if (!onSubmit) return;
-
-    if (timeOutRef.current) {
-      clearTimeout(timeOutRef.current);
-    }
-
-    timeOutRef.current = setTimeout(() => {
-      onSubmit(value);
-    }, 2000)
+    setText(value);
   }
 
+  console.log('textDebounce: ', textDebounce)
   return (
     <div>
       <form>
         <label htmlFor="searchTerm">Search:</label>
-        <input type="text" id="searchTerm" value={searchTerm} onChange={handleSearch} />
+        <input type="text" id="searchTerm" value={text} onChange={handleSearch} />
       </form>
     </div>
   )
