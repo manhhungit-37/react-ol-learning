@@ -1,19 +1,31 @@
-import React, { useContext } from 'react'
-
+import { Button, Table } from 'antd';
+import React, { useContext } from 'react';
 import { TodoContext } from '../../context/TodoContext';
-
 import TodoItem from './TodoItem';
 import TodoSearch from './TodoSearch';
 
 function TodoList() {
-  const { todos } = useContext(TodoContext);
+  const { todos, deleteTodo } = useContext(TodoContext);
+
+  const columns = [
+    {
+      title: 'Todos',
+      dataIndex: 'name',
+      key: "name"
+    },
+    {
+      title: 'Action',
+      key: "action",
+      render: (_, record) => (
+        <Button onClick={e => deleteTodo(record.key, e)}>Delete</Button>
+      )
+    }
+  ]
 
   return (
     <div>
       <TodoSearch />
-      {todos.length > 0 && todos.map(todo => (
-        <TodoItem key={todo.id} id={todo.id} name={todo.name} />
-      ))}
+      <Table columns={columns} dataSource={todos} />
     </div>
   )
 }

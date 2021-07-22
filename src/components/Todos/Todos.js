@@ -1,4 +1,7 @@
 import React from 'react'
+import { Space } from 'antd';
+import 'antd/dist/antd.css'
+
 
 // components
 import TodoForm from './TodoForm'
@@ -6,11 +9,13 @@ import TodoList from './TodoList'
 
 function Todos() {
   return (
-    <>
-      <TodoForm />
-      <br />
-      <TodoList />
-    </>
+    <div className="todos">
+      <Space direction="vertical">
+        <TodoForm />
+        <br />
+        <TodoList />
+    </Space>
+    </div>
   )
 }
 

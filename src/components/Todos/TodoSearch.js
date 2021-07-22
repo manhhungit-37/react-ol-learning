@@ -1,13 +1,16 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react';
+import { Input } from 'antd';
 
 import { TodoContext } from '../../context/TodoContext';
 import useDebounce from '../../hooks/useDebounce';
 
 function TodoSearch() {
-  const { fetchApiWithConditional } = useContext(TodoContext);
+  const { fetchApiWithConditional,todos } = useContext(TodoContext);
   const [text, setText] = useState('');
   //hooks
   const { textDebounce } = useDebounce(text);
+
+  console.log(todos);
 
   function handleSearch(e) {
     const value = e.target.value;
@@ -24,7 +27,7 @@ function TodoSearch() {
     <div>
       <form>
         <label htmlFor="searchTerm">Search:</label>
-        <input type="text" id="searchTerm" value={text} onChange={handleSearch} />
+        <Input type="text" id="searchTerm" onChange={handleSearch} />
       </form>
     </div>
   )

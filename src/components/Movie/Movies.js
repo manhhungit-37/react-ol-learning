@@ -1,14 +1,15 @@
 import React from 'react';
 import MovieForm from './MovieForm';
 import MovieList from './MovieList';
-
+import MovieContextProvider from '../../context/MovieContext';
 
 function Movies() {
   return (
-    <div>
+    <MovieContextProvider>
       <MovieForm />
       <MovieList />
-    </div>
+    </MovieContextProvider>
+    
   );
 }
 

@@ -1,25 +1,25 @@
-import { useState, useEffect, useContext, useCallback } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Route } from 'react-router-dom';
+import "./App.css";
+import BoxesColor from './components/BoxesColor';
+import BoxesColor2 from './components/BoxesColor2';
 import Click from './components/Click';
 import Comment from './components/Comment';
-import GenerateBoxes from './components/GenerateBoxes';
 import Forms from './components/Forms';
-import BoxesColor from './components/BoxesColor';
-import "./App.css"
-import BoxesColor2 from './components/BoxesColor2';
+import GenerateBoxes from './components/GenerateBoxes';
+import MagicBox from './components/MagicBox';
+import MemoContainer from './components/MemoContainer';
+import Movies from './components/Movie/Movies';
+import Navbar from './components/Navbar';
+import ReactHookForm from './components/ReactHookForm';
 import Register from './components/Register';
 import Todos from './components/Todos/Todos';
+import UseCheckSize from './components/UseCheckSize';
 import UseReducer from './components/UseReducer';
 import UseRef from './components/UseRef';
-import Navbar from './components/Navbar';
-
 // context
 import { AppContext } from './context/AppContext';
-import MovieContextProvider from './context/MovieContext';
-import Movies from './components/Movie/Movies';
-import ReactHookForm from './components/ReactHookForm';
-import UseMemo from './components/UseMemo';
-import UseCheckSize from './components/UseCheckSize';
+
 
 function App() {
   const appContext = useContext(AppContext);
@@ -32,7 +32,6 @@ function App() {
   })
   const [users, setUsers] = useState([]);
   const [count, setCount] = useState(1);
-  const [title, setTitle] = useState('truong memo')
 
 
   console.log('after render: ', messages)
@@ -53,13 +52,6 @@ function App() {
     console.log('re-run useEffect: ', count)
   }, [count])
 
-
-  const handleTitle = useCallback(
-  () => {
-    console.log('handleTitle', count)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
-
   console.log('users', users)
 
   return (
@@ -70,6 +62,18 @@ function App() {
       <Route exact path="/sample-app-boxColor1" component={BoxesColor} />
       <Route exact path="/sample-app-boxColor2" component={BoxesColor2} />
       <Route exact path="/register" component={Register} />
+      <Route path="/click" component={Click} />
+      <Route path="/comment" component={Comment} />
+      <Route path="/todos" component={Todos} />
+      <Route path="/movies" component={Movies} />
+      <Route path="/use-reducer" component={UseReducer} />
+      <Route path="/use-ref" component={UseRef} />
+      <Route path="/react-hook-form" component={ReactHookForm} />
+      <Route path="/use-memo" component={MemoContainer} />
+      <Route path="/use-check-size" component={UseCheckSize} />
+      <Route path="/magic-box" component={MagicBox} />
+
+      
 
       <br />
       <br />
@@ -100,40 +104,12 @@ function App() {
           });
         }}
       />
-      <Click />
-
-      <Comment />
-      
       <h3>Effect Hook</h3>
       {users.length > 0 && users.map(user => (
         <div key={user.id}>{user.name}</div>
       ))}
       
       <button type="button" onClick={() => setCount(count + 1)}>count adasdasdsadasd</button>
-
-      <h3> Sample Todo Context</h3>
-      <Todos />
-
-      <MovieContextProvider>
-        <Movies />
-      </MovieContextProvider>
-
-      <UseReducer />
-      
-      <UseRef />
-
-      <h1>React hook form</h1>
-
-      <ReactHookForm />
-
-      -----------------------------
-      <h3>memo hook</h3>
-      <UseMemo title={title} releaseData="123" handleTitle={handleTitle} />
-      <button type="button" onClick={() => setTitle(`truong_${Date.now()}`)}>try to change title</button>
-
-      -----------------------------
-      <h3>Custom Hook</h3>
-      <UseCheckSize />
     </div>
   );
 }

@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 export const TodoContext = React.createContext();
 
 const items = [{
-  id: 1,
+  key: '_' + Math.random().toString(36).substr(2, 9),
   name: 'learn react'
 },
 {
-  id: 2,
+  key: '_' + Math.random().toString(36).substr(2, 9),
   name: 'learn javascript'
 }]
 
@@ -32,23 +32,26 @@ export const TodoProvider = ({ children }) => {
   }
 
   function fetchApiWithConditional(text) {
+    console.log("text", text);
     const newData = defaultTodo.filter(todo => todo.name.toLowerCase().indexOf(text) !== -1);
-    setTodos(newData)
+    setTodos(newData);
   }
 
-  function deleteTodo(todoId) {
-    const newData = todos.filter(todo => todo.id !== todoId)
-    setTodos(newData)
-    setDefaultTodo(newData)
+  function deleteTodo(todoKey, e) {
+    e.preventDefault();
+    const newData = todos.filter(todo => todo.key !== todoKey);
+    setTodos(newData);
+    const newDataDefault = defaultTodo.filter(todo => todo.key !== todoKey);
+    setDefaultTodo(newDataDefault);
   }
 
   function addTodo(text) {
     const newTodo = {
-      id: Date.now(),
-      name: text
+      key: '_' + Math.random().toString(36).substr(2, 9),
+      name: text,   
     }
-    setTodos([...todos, newTodo])
-    setDefaultTodo([...todos, newTodo])
+    setTodos(prevTodos => [...prevTodos, newTodo]);
+    setDefaultTodo(prevTodos => [...prevTodos, newTodo]);
   }
 
   return (

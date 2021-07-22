@@ -74,3 +74,13 @@
   color: #ff0000;
   height: 20px;
 }
+
+.magic-box {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+}
+
+.todos input {
+  width: 50%;
+}
