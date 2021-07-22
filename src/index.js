@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 
 import App from './App';
@@ -10,12 +10,12 @@ import { AppProvider } from './context/AppContext';
 import { TodoProvider } from './context/TodoContext';
 
 ReactDOM.render(
-  <BrowserRouter>
+  <Router>
     <AppProvider>
       <TodoProvider>
         <App />
       </TodoProvider>
     </AppProvider>
-  </BrowserRouter>,
+  </Router>,
   document.getElementById('root')
 );

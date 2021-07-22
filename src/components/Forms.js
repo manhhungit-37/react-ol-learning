@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
+import { useLocation } from 'react-router-dom';
 import clsx from 'clsx'
 
 // components
 import Input from './Input'
 
 function Forms() {
+  const location = useLocation();
+
+  console.log('location froms: ', location)
   // const [forms, setForms] = useState({
   //   firstName: ''
   // })

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Route } from 'react-router-dom';
+import {  Route } from 'react-router-dom';
 import "./App.css";
 import BoxesColor from './components/BoxesColor';
 import BoxesColor2 from './components/BoxesColor2';
@@ -57,23 +57,36 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Route exact path="/forms" component={Forms} />
+      
+      <Route exact path="/" render={(props) => <GenerateBoxes {...props} />} />
       <Route exact path="/sample-app-generateBox" component={GenerateBoxes} />
       <Route exact path="/sample-app-boxColor1" component={BoxesColor} />
       <Route exact path="/sample-app-boxColor2" component={BoxesColor2} />
-      <Route exact path="/register" component={Register} />
+      <Route path="/register" component={Register} />
       <Route path="/click" component={Click} />
       <Route path="/comment" component={Comment} />
       <Route path="/todos" component={Todos} />
       <Route path="/movies" component={Movies} />
+      <Route path="/movies/:id" component={Movies} />
       <Route path="/use-reducer" component={UseReducer} />
       <Route path="/use-ref" component={UseRef} />
       <Route path="/react-hook-form" component={ReactHookForm} />
       <Route path="/use-memo" component={MemoContainer} />
       <Route path="/use-check-size" component={UseCheckSize} />
       <Route path="/magic-box" component={MagicBox} />
+      <Route exact path="/forms" component={Forms} />
 
-      
+      {/* <Redirect 
+        exact 
+        // path="/forms" 
+        to={{
+          pathname: '/forms',
+          state: {
+            isForms: true
+          }
+        }}
+        // component={Forms} 
+      /> */}
 
       <br />
       <br />

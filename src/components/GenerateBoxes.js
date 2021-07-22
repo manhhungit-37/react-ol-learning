@@ -1,6 +1,6 @@
 import { useRef, useState } from "react"
 
-export default function GenerateBoxes() {
+export default function GenerateBoxes(props) {
   const numberRef = useRef(null);
   const [boxes, setBoxes] = useState([]);
 
