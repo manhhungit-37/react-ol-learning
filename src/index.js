@@ -8,14 +8,17 @@ import App from './App';
 // context
 import { AppProvider } from './context/AppContext';
 import { TodoProvider } from './context/TodoContext';
+import { AuthenticateProvider } from './context/AuthenticateContext';
 
 ReactDOM.render(
   <Router>
-    <AppProvider>
-      <TodoProvider>
-        <App />
-      </TodoProvider>
-    </AppProvider>
+    <AuthenticateProvider>
+      <AppProvider>
+        <TodoProvider>
+          <App />
+        </TodoProvider>
+      </AppProvider>
+    </AuthenticateProvider>
   </Router>,
   document.getElementById('root')
 );

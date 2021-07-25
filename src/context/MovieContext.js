@@ -4,7 +4,7 @@ import { ADD_MOVIE, DELETE_MOVIE } from "../reducer/types";
 
 export const MovieContext = React.createContext();
 
-const MovieContextProvider = ({children}) => {
+const MovieProvider = ({children}) => {
   const [movies, dispatch] = useReducer(movieReducer, []);
 
   function addMovie(text) {
@@ -39,4 +39,4 @@ const MovieContextProvider = ({children}) => {
   )
 }
 
-export default MovieContextProvider;
+export default MovieProvider;

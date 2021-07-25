@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import HomeButton from './GoBack';
 
 const bgBoxes = {
   red: "#ff0000",
@@ -29,6 +30,7 @@ function BoxesColor2() {
       <div style={{ backgroundColor: boxes.total ? boxes.total : boxes.gold }} name="gold" onClick={onClick} >Gold</div>
       <div style={{ backgroundColor: boxes.total ? boxes.total : boxes.aqua }} name="aqua" onClick={onClick} >Aqua</div>
       <div style={{ backgroundColor: boxes.total ? boxes.total : boxes.purple }} name="purple" onClick={onClick} >Purple</div>
+      <HomeButton />
     </div>
   );
 }
