@@ -1,7 +1,7 @@
 import React from 'react';
 import useMagicBox from '../../hooks/useMagicBox';
 
-function MagicBox(props) {
+function MagicBox() {
   const { color } = useMagicBox();
 
   return (

@@ -6,7 +6,7 @@ const bgBoxes = {
   gold: "#ffd700",
   aqua: "#00ffff",
   purple: "#ff00ff",
-  total: false
+  total: null
 }
 
 function BoxesColor2() {
